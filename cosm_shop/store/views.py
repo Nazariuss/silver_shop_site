@@ -10,7 +10,7 @@ from django.urls import reverse_lazy
 
 from .forms import *
 from .models import *
-from .utils import cookieCart, cartData,guestOrder
+from .utils import cartData,guestOrder
 
 def store(request):
     data = cartData(request)
@@ -35,6 +35,17 @@ def cart(request):
 
     context = {'items':items, 'order': order, 'cartItems':cartItems}
     return render(request, 'store/cart.html',context)
+
+def post(request):
+    # data = json.loads(request.body)
+    print(request.body)
+    # action = data['action']
+    # print('action:', action)
+    # print('productId:', productId)
+
+    product = Product.objects.get(id=1)
+    context = {'product': product}
+    return render(request, 'store/post.html',context)
 
 
 def checkout(request):

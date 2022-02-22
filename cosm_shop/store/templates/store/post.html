@@ -1,0 +1,9 @@
+{% extends 'store/main.html' %}
+
+{% block content %}
+<h1>Info product</h1>
+<img class="thumbnail" src="{{ product.imageURL }}">
+<h1>{{product.name}}</h1>
+<h1>${{product.price}}</h1>
+
+{% endblock %}
