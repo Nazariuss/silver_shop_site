@@ -1,6 +1,7 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
+	<script type="text/javascript" src="{% static 'js/ggl_pay.js' %}"></script>
     <div class="row">
 		<div class="col-lg-6">
 			<div class="box-element" id="form-wrapper">
@@ -43,6 +44,11 @@
 
         <br>
         <div class="box-element hidden" id="payment-info">
+			<div id="container"></div>
+			<script async
+				src="https://pay.google.com/gp/p/js/pay.js"
+				onload="onGooglePayLoaded()">
+			</script>
 			<div id="paypal-button-container"></div>
         </div >
 
@@ -69,7 +75,6 @@
 	</div>
 
 	<script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
-
 	<script>
 		var total = '{{order.get_cart_total}}'
         // Render the PayPal button into #paypal-button-container

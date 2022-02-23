@@ -36,14 +36,14 @@ def cart(request):
     context = {'items':items, 'order': order, 'cartItems':cartItems}
     return render(request, 'store/cart.html',context)
 
-def post(request):
+def post(request,idx):
     # data = json.loads(request.body)
     print(request.body)
     # action = data['action']
     # print('action:', action)
     # print('productId:', productId)
 
-    product = Product.objects.get(id=1)
+    product = Product.objects.get(id=idx)
     context = {'product': product}
     return render(request, 'store/post.html',context)
 
