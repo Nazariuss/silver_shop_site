@@ -1,0 +1,69 @@
+input[type=range] {
+	 box-sizing: border-box;
+	 appearance: none;
+	 width: 160px;
+	 margin: 0;
+	 overflow: hidden;
+	 border: 0;
+	 border-radius: 1px;
+	 outline: none;
+	 background: linear-gradient(#9898A1,#9898A1) no-repeat center;
+	 background-size: 100% 3px;
+	 pointer-events: none;
+}
+input[type=range]:active, input[type=range]:focus {
+	 outline: none;
+}
+input[type=range]::-webkit-slider-thumb {
+	 height: 10px;
+	 width: 10px;
+	 border-radius: 50%;
+	 background-color: #9898A1;
+	 position: relative;
+	 cursor: pointer;
+	 appearance: none;
+	 pointer-events: all;
+
+}
+input[type=range]::-webkit-slider-thumb::before {
+	 content: ' ';
+	 display: block;
+	 position: absolute;
+	 top: 13px;
+	 left: 100%;
+	 width: 2000px;
+	 height: 2px;
+}
+.multi-range {
+     width: 262px;
+     height: 40px;
+     border: 2px solid #9898A1;
+     box-sizing: border-box;
+     border-radius: 2px;
+	 display: flex;
+	 justify-content: space-between;
+	 align-items: center;
+}
+
+.multi-range input[type=range] {
+	 position: absolute;
+	 left: 315px;
+}
+
+.multi-range input[type=text] {
+    outline: none;
+    border: none;
+    margin: 0px 5px;
+    color: #9898A1;
+}
+
+.multi-range input[type=range]:nth-child(1)::-webkit-slider-thumb::before {
+	 background-color: red;
+}
+
+.multi-range input[type=range]:nth-child(2) {
+	 background: none;
+}
+.multi-range input[type=range]:nth-child(2)::-webkit-slider-thumb::before {
+	 background-color: #9898A1;
+}

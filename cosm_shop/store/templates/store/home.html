@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OX.P</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <link rel="shortcut icon" href="img/faicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="navbar-content">
+                <div class="navbar-logo">
+                    <a class="navbar-brand" href="home.html">OXY.STORE</a>
+                </div>
+                <div class="navbar-info">
+                    <ul class="navbar-list">
+                        <li class="list-item"><a class="nav-link" id="act" href="{% url 'store' %}">Главная</a></li>
+                        <li class="list-item"><a class="nav-link" href="{% url 'category' %}">Категории</a></li>
+                        <li class="list-item"><a class="nav-link" href="#">О нас</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="navbar-content">
+                <div class="search">
+                    <div>
+                        <form action="{% url 'category' %}" method="get">
+                            <input type="text" class="search-input" placeholder="Поиск по названию" name="text_search">
+                            <button class="search-icon" type="submit" ><img src="{% static 'img/search.svg' %}" alt=""></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="navbar-icons">
+                    <ul class="icons-list">
+                        <li class="icons-item"><a class="nav-link" href="#"><img src="{% static 'img/heart.svg' %}" alt=""></a></li>
+                        <li class="icons-item"><a class="nav-link" href="{% url 'order' %}"><img src="{% static 'img/cart.svg' %}" alt=""> <span class="total-price">{{order.get_cart_total}}</span></a></li>
+                        <li class="icons-item"><a class="nav-link disabled" href="#"><img src="{% static 'img/user.svg' %}" alt=""></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="marquee-infinite">
+        <div>
+        <span>
+            <img src="img/Sale.png" alt="">
+            <img src="img/Facial_cosmetics.png" alt="">
+            <img src="img/Sale.png" alt="">
+            <img src="img/Facial_cosmetics.png" alt="">
+            <img src="img/Sale.png" alt="">
+            <img src="img/Facial_cosmetics.png" alt="">
+            <img src="img/Sale.png" alt="">
+            <img src="img/Facial_cosmetics.png" alt="">
+        </span>
+        <span>
+            <img src="img/Sale.png" alt="">
+            <img src="img/Facial_cosmetics.png" alt="">
+            <img src="img/Sale.png" alt="">
+            <img src="img/Facial_cosmetics.png" alt="">
+            <img src="img/Sale.png" alt="">
+            <img src="img/Facial_cosmetics.png" alt="">
+            <img src="img/Sale.png" alt="">
+            <img src="img/Facial_cosmetics.png" alt="">
+        </span>
+    </div>
+    </div>
+    <div class="content">
+        <div class="main-info-text">
+                <p class="text-first">Online store of Korean cosmetics</p>
+                <p class="text-second">All bestsellers and novelties. For different skin types. Promotions and discounts. Selection of gifts</p>
+                <a href="#"><div>Buy</div></a>
+            </div>
+        <div class="slideshow-container">
+              <div class="mySlides fade">
+                <img src="img/main_img1.png" style="width:100%">
+              </div>
+              <div class="mySlides fade">
+                <img src="img/main_img2.png" style="width:100%">
+              </div>
+              <div class="mySlides fade">
+                <img src="img/main_img3.png" style="width:100%">
+              </div>
+
+            </div>
+        <div style="text-align:center">
+              <span class="dot" onclick="currentSlide(1)"></span>
+              <span class="dot" onclick="currentSlide(2)"></span>
+              <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+        <div class="top-categories">
+            <div class="block-see-all">
+                <p class="new-arrivals-text">Топ категории</p>
+                <a class="link-see-all" href="{% url 'category' %}"><p>Больше</p></a>
+            </div>
+            <ul class="top-categories-list">
+                <li class="top-cat-item">
+                    <a class="top-cat-link" href="#"><img src="img/cream.svg" alt=""><p class="cat-name">Крем для лица</p></a>
+                </li>
+                <li class="top-cat-item">
+                    <a class="top-cat-link" href="#"><img src="img/cream.svg" alt=""><p class="cat-name">Крем для лица</p></a>
+                </li>
+                <li class="top-cat-item">
+                    <a class="top-cat-link" href="#"><img src="img/cream.svg" alt=""><p class="cat-name">Крем для лица</p></a>
+                </li>
+                <li class="top-cat-item">
+                    <a class="top-cat-link" href="#"><img src="img/cream.svg" alt=""><p class="cat-name">Крем для лица</p></a>
+                </li>
+                <li class="top-cat-item">
+                    <a class="top-cat-link" href="#"><img src="img/cream.svg" alt=""><p class="cat-name">Крем для лица</p></a>
+                </li>
+                <li class="top-cat-item">
+                    <a class="top-cat-link" href="#"><img src="img/cream.svg" alt=""><p class="cat-name">Крем для лица</p></a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="top-post">
+            <div class="block-see-all">
+                <p class="new-arrivals-text">Новое</p>
+                <a class="link-see-all" href="{% url 'category' %}"><p>Больше</p></a>
+            </div>
+            <div class="product-list">
+                {% for product in new_products %}
+                    <div class="product-info">
+                        <div class="product-image">
+                            <div class="label-new"><p>New</p></div>
+                            <a href="{% url 'post' product.id %}"><img src="{{ product.imageURL }}" alt="Photo"></a>
+                        </div>
+                        <div class="product-name">
+                            <div class="name-cat">
+                                <p class="name">{{product.name}}</p>
+                                <p class="cat">{{product.cat.first}}</p>
+                            </div>
+                            <div class="click-hearth"><input class="hearth" type="button" onmousedown="viewDiv(this)"></div>
+                        </div>
+                        <div class="buy_and_price">
+                            <a  class="button-buy" href="{% url 'post' product.id %}"><div>Купить</div></a>
+                            <p class="price">{{product.price}}₴</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="top-post">
+            <div class="block-see-all">
+                <p class="new-arrivals-text">Популярное</p>
+                <a class="link-see-all" href="{% url 'category' %}"><p>Больше</p></a>
+            </div>
+            <div class="product-list">
+                {% for product in best_products %}
+                    <div class="product-info">
+                        <div class="product-image"><a href="{% url 'post' product.id %}"><img src="{{ product.imageURL }}" alt="Photo"></a></div>
+                        <div class="product-name">
+                            <div class="name-cat">
+                                <p class="name">{{product.name}}</p>
+                                <p class="cat">{{product.cat.first}}</p>
+                            </div>
+                            <div class="click-hearth"><input class="hearth" type="button" onmousedown="viewDiv(this)"></div>
+                        </div>
+                        <div class="buy_and_price">
+                            <a  class="button-buy" href="{% url 'post' product.id %}"><div>Купить</div></a>
+                            <p class="price">{{product.price}}₴</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="top-post">
+            <div class="block-see-all">
+                <p class="new-arrivals-text">Статьи</p>
+                <a class="link-see-all" href="#"><p>Больше</p></a>
+            </div>
+            <div class="product-list">
+                <div class="product-info">
+                    <div class="product-image"><a href=""><img src="img/img_post.png" alt="Photo"></a></div>
+                    <div class="product-name">
+                            <p class="name">ТОП тональных кремов 2022</p>
+                    </div>
+                    <div class="button-read">
+                        <p class="date-post">7 февраля, 2022</p>
+                        <a  class="read" href="#">Читать<img src="img/read.svg" alt=""> </a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-image"><a href=""><img src="img/img_post.png" alt="Photo"></a></div>
+                    <div class="product-name">
+                            <p class="name">ТОП тональных кремов 2022</p>
+                    </div>
+                    <div class="button-read">
+                        <p class="date-post">7 февраля, 2022</p>
+                        <a  class="read" href="#">Читать<img src="img/read.svg" alt=""> </a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-image"><a href=""><img src="img/img_post.png" alt="Photo"></a></div>
+                    <div class="product-name">
+                            <p class="name">ТОП тональных кремов 2022</p>
+                    </div>
+                    <div class="button-read">
+                        <p class="date-post">7 февраля, 2022</p>
+                        <a  class="read" href="#">Читать<img src="img/read.svg" alt=""> </a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-image"><a href=""><img src="img/img_post.png" alt="Photo"></a></div>
+                    <div class="product-name">
+                            <p class="name">ТОП тональных кремов 2022</p>
+                    </div>
+                    <div class="button-read">
+                        <p class="date-post">7 февраля, 2022</p>
+                        <a  class="read" href="#">Читать<img src="img/read.svg" alt=""> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="more-info">
+        <p>Онлайн магазин Корейской косметики Oxy.store</p>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="container-second">
+                <section class="">
+                    <div class="row">
+                      <div class="col-auto">
+                        <p class="pt-2">
+                          <strong>Подписаться на рассылку</strong>
+                        </p>
+                      </div>
+                      <div class="navbar-search">
+                        <div class="search">
+                            <div>
+                                <form action="{% url 'category' %}" method="get">
+                                    <input type="text" class="search-input" placeholder="Введите почту" name="text_mail">
+                                    <button class="search-icon" type="submit" ><img src="{% static 'img/mail.svg' %}" alt=""></button>
+                                </form>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                </section>
+                <div class="footer-icons">
+                <ul class="footer-list-icons">
+                    <li class="icon-item"><a class="nav-link" href="#"><img src="img/icons8-tiktok.svg" alt=""></a></li>
+                    <li class="icon-item"><a class="nav-link" href="#"><img src="img/youtube.svg" alt=""></a></li>
+                    <li class="icon-item"><a class="nav-link" href="#"><img src="img/telegram.svg" alt=""></a></li>
+                    <li class="icon-item"><a class="nav-link" href="#"><img src="img/inst.svg" alt=""></a></li>
+                </ul>
+            </div>
+            <div class="text-center p-3"><a class="text-down" href="#">© OXY online store 2022</a></div>
+            </div>
+            <div class="container-first">
+                  <div class="footer-list">
+                    <div class="footer-list-items">
+                      <h5 class="text-uppercase">Клиентам</h5>
+                      <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Home page</a></li>
+                        <li><a href="#" class="text-white">ALL Categories</a></li>
+                        <li><a href="#" class="text-white">About Us</a></li>
+                      </ul>
+                    </div>
+                    <div class="footer-list-items">
+                      <h5 class="text-uppercase">Доставка</h5>
+                      <ul class="list-unstyled mb-0">
+                        <li><a href="#" class="text-white">Shipping and payment</a></li>
+                        <li><a href="#" class="text-white">Agreement</a></li>
+                        <li><a href="#" class="text-white">Wholesale clients</a></li>
+                      </ul>
+                    </div>
+                    <div class="footer-list-items">
+                      <h5 class="text-uppercase">Контакты</h5>
+                      <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">093 38 48 050</a></li>
+                        <li><a href="#" class="text-white">oxy.store@gmail.com</a></li>
+                      </ul>
+                    </div>
+                  </div>
+            </div>
+
+        </div>
+    </footer>
+    <script src="{% static 'js/slideshow.js' %}" ></script>
+    <script>
+        function viewDiv(ele) {
+            if (ele.style.backgroundImage == 'url("../img/hearth-fill.svg")') {
+                ele.style.backgroundImage="url(../img/Path.svg)";
+            } else {
+                ele.style.backgroundImage="url(../img/hearth-fill.svg)";
+            }
+        }
+    </script>
+</body>
+</html>

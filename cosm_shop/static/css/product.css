@@ -1,0 +1,598 @@
+@font-face {
+  font-family: 'Gilroy B';
+  src: url('../fonts/Gilroy-Bold.ttf');
+}
+@font-face {
+  font-family: 'Gilroy SB';
+  src: url('../fonts/Gilroy-Semibold.ttf');
+}
+@font-face {
+  font-family: 'Gilroy R';
+  src: url('../fonts/Gilroy-Regular.ttf');
+}
+@font-face {
+  font-family: 'Bronova';
+  src: url('../fonts/Bronova Bold.ttf');
+}
+
+*{
+    padding:0;
+    margin:0;
+}
+
+body {
+    font-family: 'Gilroy R';
+}
+
+/* Header start */
+
+.header {
+    background-color: #F1E8FF;
+    height: 100px;
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.navbar {
+    width: 1320px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-content {
+   height: 40px;
+   display: flex;
+   align-items: center;
+}
+
+.navbar-logo {
+    margin-right: 70px;
+}
+
+.navbar-brand {
+    font-family: 'Bronova';
+    color: #363941;
+    font-size: 24px;
+}
+
+.navbar-info ul {
+    display: flex;
+}
+
+.list-item{
+    margin-right: 50px;
+}
+
+.nav-link {
+    font-family: 'Gilroy SB';
+    font-size: 14px;
+    transition: 0.5s;
+}
+
+.nav-link img {
+    width: 24px;
+}
+
+.list-item .nav-link:hover{
+    opacity: 0.6;
+}
+
+#act {
+    color: #9F6ABA;
+}
+
+.navbar-icons {
+    padding-top: 3px;
+}
+
+.navbar-icons ul {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.icons-list li:nth-child(2) {
+    margin: 0px 25px;
+}
+
+ul li {
+    list-style: none;
+    position: relative;
+}
+
+.total-price {
+    position: absolute;
+    margin-left: -37px;
+    margin-top: 25px;
+}
+a {
+    font-size: 18px;
+    color: #97979F;
+    text-decoration: none;
+}
+
+
+.search {
+
+}
+
+.search div form {
+    width: 300px;
+    height: 40px;
+    border: 1.5px solid #97979F;
+    box-sizing: border-box;
+    border-radius: 26px;
+    margin-right: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-input {
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    font-family: 'Gilroy R';
+    font-size: 14px;
+    color: #97979F;
+    margin-left: 20px;
+}
+input.search-input::placeholder {
+    font-family: 'Gilroy R';
+    font-size: 14px;
+    color: #97979F;
+}
+
+
+.search .search-input {
+    width: 100%;
+    transition: width 0.4s linear
+}
+
+.search-icon {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-top: 2px;
+    margin-right: 16px;
+
+}
+
+.search-icon img {
+    width: 24px;
+}
+
+.search-icon:hover {
+    color: #fff !important
+}
+
+.nav-icons {
+    display: inline;
+}
+/* Header over */
+
+
+.content{
+    margin: auto;
+    width: 1160px;
+    margin-bottom: 50px;
+    height: 1000px;
+}
+
+.link-home {
+    margin-bottom: 50px;
+}
+
+.image-arrow {
+    margin-right: 15px;
+}
+
+
+.product-cart {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-cart-image img {
+    width:450px;
+}
+
+.product-main-info {
+    width: 475px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hearth {
+    width:28px;
+    height:26px;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+    background-image: url('../img/Path.svg');
+}
+
+.product-name {
+    font-family: 'Gilroy B';
+    font-size: 40px;
+    line-height: 30px;
+    color: #363941;
+    margin-bottom: 15px;
+}
+
+.product-cat {
+    font-family: 'Gilroy B';
+    font-size: 18px;
+    color: #97979F;
+    margin-bottom: 40px;
+}
+
+
+.available-text {
+    font-size: 18px;
+}
+
+.barcode-code {
+    font-family: 'Gilroy B';
+    font-size: 14px;
+    color: #363941;
+}
+
+
+.product-info-count {
+    width: 450px;
+    position: relative;
+    display: flex;
+
+}
+
+
+.count-buttons .option{
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 110px;
+  height: 50px;
+  margin-right: 20px;
+  cursor: pointer;
+  border: 2px solid #9898A1;
+  border-radius: 2px;
+  transition: 0.3s;
+
+}
+
+
+input[type="radio"]{
+  display: none;
+
+}
+
+#option-1:checked:checked ~ .option-1,
+#option-2:checked:checked ~ .option-2{
+  border-color: #9F6ABA;
+}
+
+.product-info-count .option span{
+    font-family: 'Gilroy B';
+    font-size: 18px;
+    color: #97979F;
+
+
+
+}
+#option-1:checked:checked ~ .option-1 span,
+#option-2:checked:checked ~ .option-2 span{
+  color: #9F6ABA;
+}
+
+.count-min-plus{
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.count-min-plus div {
+    text-align: center;
+}
+
+#counter-label {
+    width: 35px;
+    font-family: 'Gilroy B';
+    font-size: 18px;
+    line-height: 20px;
+    color: #363941;
+    margin-left: -5px;
+
+}
+
+.count-min-plus button {
+
+    width:22px;
+    height:22px;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+}
+
+.info-delivery {
+    margin-top:45px;
+}
+
+.info-delivery div {
+    padding-bottom: 15px;
+    display: flex;
+    align-items: center;
+    font-family: 'Gilroy B';
+    letter-spacing: 0.5px;
+    font-size: 14px;
+    line-height: 15px;
+
+    color: #363941;
+}
+.info-delivery img{
+    margin-right: 15px;
+}
+
+.product-sale{
+    display: flex;
+    align-items: center;
+
+}
+
+.button-sale {
+    outline: none;
+    width: 220px;
+    height: 60px;
+    background: #9F6ABA;
+    border-radius: 56px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.button-sale:hover {
+    transform: scale(1.05);
+}
+
+.button-sale span {
+    font-family: 'Gilroy B';
+    font-size: 20px;
+    color: #FFFFFF;
+    margin: 3px 0px 0px 0px;
+}
+
+.product-price{
+    font-family: 'Gilroy B';
+    font-size: 30px;
+    line-height: 33px;
+    color: #191919;
+    margin-left: 40px;
+    letter-spacing: 1px;
+}
+
+
+.product-info{
+    width: 100%;
+}
+#text-info-prod {
+    width: 100%;
+    font-size: 18px;
+    line-height: 26px;
+    color: #97979F;
+    margin-top: 30px;
+}
+
+.product-info span {
+    font-family: 'Gilroy B';
+    font-size: 28px;
+    line-height: 31px;
+    color: #97979F;
+    margin-right:80px;
+
+    cursor: pointer;
+    transition: 1s;
+}
+
+
+#op-1:checked:checked ~ .op-1 span,
+#op-2:checked:checked ~ .op-2 span{
+  color: #9F6ABA;
+}
+
+.tab {
+    overflow: hidden;
+    width: 100%;
+    margin-top: 90px;
+
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background: none;
+    float: left;
+    border: none;
+    outline: none;
+    font-family: 'Gilroy B';
+    font-size: 28px;
+    line-height: 31px;
+    color: #97979F;
+    margin-right:80px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  opacity: 0.6;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  color: #9F6ABA;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    margin-top: 30px;
+    border-top: none;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px;
+    color: #97979F;
+}
+
+
+.more-info {
+    width: 100%;
+    height: 60px;
+    background: #9F6ABA;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.more-info {
+    font-family: 'Gilroy B';
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+/* Content over */
+
+/* Footer start */
+.footer {
+    width: 100%;
+    height: 330px;
+    background: #524F55;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content {
+    width: 1320px;
+    height:260px;
+    display:flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+
+.footer-list {
+    display:flex;
+}
+
+.footer-list div:nth-child(2){
+    margin: 0px 100px 0px 130px;
+}
+
+.text-uppercase {
+    font-family: 'Gilroy B';
+    font-size: 16px;
+    display:flex;
+    justify-content: space-between;
+    color: #fff;
+    margin: 0px 0px 22px 0px;
+}
+
+.list-unstyled li {
+    margin: 0px 0px 18px 0px;
+}
+
+.text-white {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.text-down {
+    font-family: 'Gilroy R';
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.col-auto {
+    font-family: 'Gilroy B';
+    font-size: 16px;
+    color: #fff;
+    margin: 0px 0px 26px 0px;
+}
+
+
+.footer-icons {
+    margin-top: 35px;
+    margin-bottom: 60px;
+}
+
+.footer-list-icons {
+display: flex;
+
+}
+.icon-item {
+    margin-right: 30px;
+}
+
+.container-first a {
+    transition: 0.3s;
+}
+
+.container-first a:hover {
+    opacity: 0.6;
+}
+
+.search-inputs {
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    line-height: 20px;
+    color: #97979F;
+}
+
+.search .search-inputs {
+    padding-left: 15px;
+    width: 100%;
+    caret-color: #97979F;
+    font-size: 14px;
+    font-weight: 300;
+    color: black;
+    transition: width 0.4s linear;
+    color: #fff;
+    font-family: 'Gilroy R';
+    margin-top: 1px;
+    margin-left: 8px;
+}
+.search-input::placeholder {
+    font-family: 'Gilroy R';
+    font-size: 12px;
+    line-height: 20px;
+    color: #97979F;
+}
+
+.search-icons {
+    float: right;
+    padding-right: 22px;
+    margin-top: 5px;
+}
+
+
+.search-icons img {
+    width: 18px;
+}
+
+/* Footer over */

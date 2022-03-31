@@ -1,0 +1,710 @@
+@font-face {
+  font-family: 'Gilroy B';
+  src: url('../fonts/Gilroy-Bold.ttf');
+}
+@font-face {
+  font-family: 'Gilroy SB';
+  src: url('../fonts/Gilroy-Semibold.ttf');
+}
+@font-face {
+  font-family: 'Gilroy R';
+  src: url('../fonts/Gilroy-Regular.ttf');
+}
+@font-face {
+  font-family: 'Bronova';
+  src: url('../fonts/Bronova Bold.ttf');
+}
+
+*{
+    padding:0;
+    margin:0;
+}
+
+
+body {
+    font-family: 'Gilroy R';
+
+}
+
+/* Header start */
+
+.header {
+    background-color: #F1E8FF;
+    height: 100px;
+    display: flex;
+
+}
+
+.navbar {
+    width: 1320px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-content {
+   height: 40px;
+   display: flex;
+   align-items: center;
+}
+
+.navbar-logo {
+    margin-right: 70px;
+}
+
+.navbar-brand {
+    font-family: 'Bronova';
+    color: #363941;
+    font-size: 24px;
+}
+
+.navbar-info ul {
+    display: flex;
+}
+
+.list-item{
+    margin-right: 50px;
+}
+
+.nav-link {
+    font-family: 'Gilroy SB';
+    font-size: 14px;
+    transition: 0.5s;
+}
+
+.nav-link img {
+    width: 24px;
+}
+
+.list-item .nav-link:hover{
+    opacity: 0.6;
+}
+
+#act {
+    color: #9F6ABA;
+}
+
+.navbar-icons {
+    padding-top: 3px;
+}
+
+.navbar-icons ul {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.icons-list li:nth-child(2) {
+    margin: 0px 25px;
+}
+
+ul li {
+    list-style: none;
+    position: relative;
+}
+
+.total-price {
+    position: absolute;
+    margin-left: -37px;
+    margin-top: 25px;
+}
+a {
+    font-size: 18px;
+    color: #97979F;
+    text-decoration: none;
+}
+
+
+.search {
+
+}
+
+.search div form {
+    width: 300px;
+    height: 40px;
+    border: 1.5px solid #97979F;
+    box-sizing: border-box;
+    border-radius: 26px;
+    margin-right: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-input {
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    font-family: 'Gilroy R';
+    font-size: 14px;
+    color: #97979F;
+    margin-left: 20px;
+}
+input.search-input::placeholder {
+    font-family: 'Gilroy R';
+    font-size: 14px;
+    color: #97979F;
+}
+
+
+.search .search-input {
+    width: 100%;
+    transition: width 0.4s linear
+}
+
+.search-icon {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-top: 2px;
+    margin-right: 16px;
+
+}
+
+.search-icon img {
+    width: 24px;
+}
+
+.search-icon:hover {
+    color: #fff !important
+}
+
+.nav-icons {
+    display: inline;
+}
+/* Header over */
+
+/* marquee infinite */
+.marquee-infinite {
+    height: 43px;
+    background: #E96161;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.marquee-infinite div {
+    height: 43px;
+    display: flex;
+    align-items: center;
+    width: 200%;
+    animation: marquee-infinite 15s linear infinite;
+}
+
+.marquee-infinite span {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.marquee-infinite:hover div {
+    animation-play-state: paused;
+}
+
+@keyframes marquee-infinite {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.content{
+    margin: auto;
+    width: 1162px;
+    margin-bottom: 150px;
+}
+
+/* Slideshow */
+.slideshow-container {
+  position: relative;
+  margin: auto;
+  margin-top: 50px;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 5px;
+  width: 5px;
+  margin: 30px 10px;
+  background-color: #C4C4C4;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 2s;
+  animation-name: fade;
+  animation-duration: 2s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .1}
+}
+
+@keyframes fade {
+  from {opacity: .1}
+}
+
+/* Start content */
+.main-info-text {
+    position: absolute;
+    z-index: 1;
+    width: 600px;
+    margin-top: 95px;
+    margin-left: 80px;
+}
+
+.main-info-text div {
+    width: 200px;
+    height: 60px;
+    background: #363941;
+    border-radius: 72px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Gilroy B';
+    font-size: 22px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+
+.text-first{
+    font-family: 'Gilroy B';
+    font-size: 62px;
+    line-height: 80px;
+    color: #363941;
+    margin: 0px 0px 30px 0px;
+}
+.text-second{
+    width:400px;
+    font-size: 18px;
+    line-height: 28px;
+    color: #FFFFFF;
+    margin: 0px 0px 40px 0px;
+}
+
+.main-info-button{
+    width: 200px;
+    height: 60px;
+    background: #163941;
+    border-radius: 72px;
+
+}
+
+.main-info-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.main-info-button div {
+    font-family: 'Gilroy B';
+    font-size: 22px;
+    color: #fff;
+}
+
+.block-see-all {
+    display:flex;
+}
+
+.link-see-all {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 32px;
+    border: 1.5px solid #97979F;
+    border-radius: 32px;
+    font-family: 'Gilroy B';
+    font-size: 12px;
+    line-height: 13px;
+    color: #97979F;
+    margin-left: 27px;
+    margin-top: 7px;
+    transition: 0.3s;
+}
+.link-see-all p {
+    margin-top: 2px;
+}
+
+.link-see-all:hover {
+    opacity: 0.6;
+}
+.link-see-all:active {
+    border: 1.5px solid #9F6ABA;
+    color: #9F6ABA;
+}
+
+
+.top-categories-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-categories-list li a{
+    display: block;
+    width: 160px;
+    height: 48px;
+    background: #F1E8FF;
+    display: inline-flex;
+    align-items: center;
+}
+.top-cat-link img {
+    height: 28px;
+    width: 28px;
+    margin: 10px 0px 7px 10px;
+}
+.top-cat-item p {
+    font-size: 13px;
+    margin: 3px 0px 0px 10px;
+}
+
+.top-categories-list li {
+    transition: 0.3s;
+}
+
+.top-categories-list li:hover {
+    transform: scale(1.1);
+}
+
+.cat-name {
+    font-family: 'Gilroy B';
+    font-size: 18px;
+    line-height: 20px;
+    color: #363941;
+}
+
+
+
+.new-arrivals-text {
+    font-family: 'Gilroy B';
+    font-size: 40px;
+    color: #363941;
+    margin: 0px 0px 30px 0px;
+}
+
+.top-post{
+    margin: 60px 0px 0px 0px;
+}
+
+.product-list {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 0px 30px 0px;
+}
+.product-info {
+    width: 260px;
+    transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-image {
+    position: relative;
+    transition: 0.3s;
+}
+
+.label-new{
+    position: absolute;
+    right: 0px;
+    width: 82px;
+    height: 36px;
+    background: #E96161;
+    border-radius: 26px 2px 26px 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Gilroy B';
+    font-size: 16px;
+    line-height: 18px;
+    color: #FFFFFF;
+}
+
+.product-image img {
+    width: 100%;
+    border-radius: 5px;
+    margin: 0px 0px 18px 0px;
+    transition: 0.3s;
+}
+
+.product-image:hover {
+    transform: scale(1.05);
+}
+
+.product-name{
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 0px 20px 0px;
+}
+
+.name-cat {
+    width: 80%;
+}
+
+.name {
+    font-family: 'Gilroy B';
+    font-size: 18px;
+    color: #363941;
+    margin: 0px 0px 8px 0px;
+}
+.cat {
+    font-family: 'Gilroy R';
+    font-size: 12px;
+    color: #97979F;
+}
+
+.icon-hearth {
+    transition: 0.5s;
+}
+
+
+.hearth {
+    width:28px;
+    height:26px;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+    background-image: url('../img/Path.svg');
+}
+
+.icon-hearth:active {
+    background-color: #9F6ABA;
+}
+
+.icon-hearth:hover {
+    opacity: 0.6;
+}
+
+.button-read {
+    display: flex;
+    justify-content: space-between;
+}
+
+.read {
+    font-family: 'Gilroy B';
+    font-size: 18px;
+    line-height: 20px;
+    color: #9F6ABA;
+
+}
+
+.read img {
+    margin-left: 10px;
+}
+
+
+.date-post {
+    font-size: 14px;
+    color: #97979F;
+}
+
+
+.product-name img {
+    width:35px;
+    height: 35px;
+}
+.buy_and_price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button-buy {
+    width: 140px;
+    height: 42px;
+    background: #9F6ABA;
+    border-radius: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.button-buy:hover {
+    transform: scale(1.05);
+}
+
+
+.button-buy div {
+    font-family: 'Gilroy B';
+    font-size: 18px;
+    color: #FFFFFF;
+    margin: 3px 0px 0px 0px;
+}
+.price {
+    font-family: 'Gilroy B';
+    font-size: 22px;
+    color: #191919;
+    letter-spacing: 1px;
+
+}
+
+.nav-arrows {
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.arrows img {
+    width: 40px;
+}
+
+.arrow-left {
+    margin: 0px 15px 0px 0px;
+}
+.more-info {
+    width: 100%;
+    height: 60px;
+    background: #9F6ABA;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.more-info {
+    font-family: 'Gilroy B';
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+/* Content over */
+
+/* Footer start */
+.footer {
+    width: 100%;
+    height: 330px;
+    background: #524F55;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content {
+    width: 1320px;
+    height:260px;
+    display:flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+
+.footer-list {
+    display:flex;
+}
+
+.footer-list div:nth-child(2){
+    margin: 0px 100px 0px 130px;
+}
+
+.text-uppercase {
+    font-family: 'Gilroy B';
+    font-size: 16px;
+    display:flex;
+    justify-content: space-between;
+    color: #fff;
+    margin: 0px 0px 22px 0px;
+}
+
+.list-unstyled li {
+    margin: 0px 0px 18px 0px;
+}
+
+.text-white {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.text-down {
+    font-family: 'Gilroy R';
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.col-auto {
+    font-family: 'Gilroy B';
+    font-size: 16px;
+    color: #fff;
+    margin: 0px 0px 26px 0px;
+}
+
+
+.footer-icons {
+    margin-top: 35px;
+    margin-bottom: 60px;
+}
+
+.footer-list-icons {
+display: flex;
+
+}
+.icon-item {
+    margin-right: 30px;
+}
+
+.container-first a {
+    transition: 0.3s;
+}
+
+.container-first a:hover {
+    opacity: 0.6;
+}
+
+.search-inputs {
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    line-height: 20px;
+    color: #97979F;
+}
+
+.search .search-inputs {
+    padding-left: 15px;
+    width: 100%;
+    caret-color: #97979F;
+    font-size: 14px;
+    font-weight: 300;
+    color: black;
+    transition: width 0.4s linear;
+    color: #fff;
+    font-family: 'Gilroy R';
+    margin-top: 1px;
+    margin-left: 8px;
+}
+.search-input::placeholder {
+    font-family: 'Gilroy R';
+    font-size: 12px;
+    line-height: 20px;
+    color: #97979F;
+}
+
+.search-icons {
+    float: right;
+    padding-right: 22px;
+    margin-top: 5px;
+}
+
+
+.search-icons img {
+    width: 18px;
+}
+
+/* Footer over */

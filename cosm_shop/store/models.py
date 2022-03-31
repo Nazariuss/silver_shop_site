@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
+from django.urls import reverse
+
 
 class Customer(models.Model):
     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
@@ -13,9 +15,13 @@ class Customer(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=200, null=True)
+    tag = models.CharField(max_length=50, null=True)
     price = models.DecimalField(max_digits=7, decimal_places=2)
+    about = models.TextField(max_length=500,null=True)
+    composition = models.TextField(max_length=500, null=True)
     digital = models.BooleanField(default=False, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
+    cat = models.ManyToManyField('Category')
 
     def __str__(self):
         return self.name
@@ -27,6 +33,19 @@ class Product(models.Model):
         except:
             url = ''
         return url
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=30, null=True)
+
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+
+    # def get_absolute_url(self):
+    #    return reverse('category', args=[self.name, ])
 
 
 class Order(models.Model):

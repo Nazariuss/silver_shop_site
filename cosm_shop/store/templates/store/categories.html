@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OX.P</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/categories.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/range.css' %}">
+    <link rel="shortcut icon" href="img/faicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="navbar-content">
+                <div class="navbar-logo">
+                    <a class="navbar-brand" href="home.html">OXY.STORE</a>
+                </div>
+                <div class="navbar-info">
+                    <ul class="navbar-list">
+                        <li class="list-item"><a class="nav-link" href="{% url 'store' %}">Главная</a></li>
+                        <li class="list-item"><a class="nav-link" id="act" href="{% url 'category' %}">Категории</a></li>
+                        <li class="list-item"><a class="nav-link" href="#">О нас</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="navbar-content">
+                <div class="search">
+                    <div>
+                        <form action="{% url 'category' %}" method="get">
+                            <input type="text" class="search-input" placeholder="Поиск по названию" name="text_search">
+                            <button class="search-icon" type="submit" ><img src="{% static 'img/search.svg' %}" alt=""></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="navbar-icons">
+                    <ul class="icons-list">
+                        <li class="icons-item"><a class="nav-link" href="#"><img src="{% static 'img/heart.svg' %}" alt=""></a></li>
+                        <li class="icons-item"><a class="nav-link" href="{% url 'order' %}"><img src="{% static 'img/cart.svg' %}" alt=""> <span class="total-price">{{order.get_cart_total}}</span></a></li>
+                        <li class="icons-item"><a class="nav-link disabled" href="#"><img src="{% static 'img/user.svg' %}" alt=""></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="content">
+        <div class="link-home">
+            <img class="image-arrow" src="{% static 'img/arrow-left.svg' %}" alt="">
+            <a class="back-page" href="{% url 'store' %}">Home</a>
+        </div>
+        <div class="top-post">
+            <form action="{% url 'category' %}" method="get">
+                <div class="categories">
+                    <p class="main-text-cat">Категории</p>
+                    <div class="cat-filter">
+                        <p class="filter-name">Применение</p>
+                        <div class="multi-selector">
+                            <div class="select-field">
+                                <p class="input-selector">Уходовая косметика</p>
+                                <span class="down-arrow"></span>
+                            </div>
+                            <div class="list">
+                                {% for cat in cats %}
+                                    {% if cat.id in filter_cats %}
+                                        <div class="filter-item">
+                                            <input type="checkbox" id="{{ cat }}" class="check" name="cat" value="{{ cat.id }}" checked>
+                                            <label for="{{ cat }}">{{ cat }}</label>
+                                        </div>
+                                    {% else %}
+                                        <div class="filter-item">
+                                            <input type="checkbox" id="{{ cat }}" class="check" name="cat" value="{{ cat.id }}">
+                                            <label for="{{ cat }}">{{ cat }}</label>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="multi-selector">
+                            <div class="select-field2">
+                                <p class="input-selector">Волосы</p>
+                                <span class="down-arrow2"></span>
+                            </div>
+                            <div class="list2">
+                                <div class="filter-item">
+                                    <input type="checkbox" id="cream0" class="check">
+                                    <label for="cream0">Cream</label>
+                                </div>
+                                <div class="filter-item">
+                                    <input type="checkbox" id="lotion0" class="check">
+                                    <label for="lotion0">Lotion</label>
+                                </div>
+                                <div class="filter-item">
+                                    <input type="checkbox" id="patches0" class="check">
+                                    <label for="patches0">Patch</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="multi-selector">
+                                 <div class="select-field3">
+                                    <p class="input-selector">Тело</p>
+                                    <span class="down-arrow3"></span>
+                                 </div>
+                                 <div class="list3">
+                                     <div class="filter-item">
+                                        <input type="checkbox" id="cream1" class="check">
+                                        <label for="cream1">Cream</label>
+                                     </div>
+                                     <div class="filter-item">
+                                        <input type="checkbox" id="lotion1" class="check">
+                                        <label for="lotion1">Lotion</label>
+                                     </div>
+                                     <div class="filter-item">
+                                        <input type="checkbox" id="patch1" class="check">
+                                        <label for="patch1">Patch</label>
+                                     </div>
+                                 </div>
+                            </div>
+                        <div class="multi-selector">
+                                 <div class="select-field4">
+                                    <p class="input-selector">Аксесуары</p>
+                                    <span class="down-arrow4"></span>
+                                 </div>
+                                 <div class="list4">
+                                     <div class="filter-item">
+                                        <input type="checkbox" id="cream2" class="check">
+                                        <label for="cream2">Cream</label>
+                                     </div>
+                                     <div class="filter-item">
+                                        <input type="checkbox" id="lotion2" class="check">
+                                        <label for="lotion2">Lotion</label>
+                                     </div>
+                                     <div class="filter-item">
+                                        <input type="checkbox" id="patch2" class="check">
+                                        <label for="patch2">Patch</label>
+                                     </div>
+                                 </div>
+                            </div>
+                        <div class="multi-selector">
+                                 <div class="select-field5">
+                                    <p class="input-selector">Декоративная косметика</p>
+                                    <span class="down-arrow5"></span>
+                                 </div>
+                                 <div class="list5">
+                                     <div class="filter-item">
+                                        <input type="checkbox" id="cream3" class="check">
+                                        <label for="cream3">Cream</label>
+                                     </div>
+                                     <div class="filter-item">
+                                        <input type="checkbox" id="lotion3" class="check">
+                                        <label for="lotion3">Lotion</label>
+                                     </div>
+                                     <div class="filter-item">
+                                        <input type="checkbox" id="patch3" class="check">
+                                        <label for="patch3">Patch</label>
+                                     </div>
+                                 </div>
+                            </div>
+                    </div>
+                    <p class="filter-name">Price</p>
+                    <div class="multi-range">
+                        <input type="text" id="min" value="{{price_min}}" maxlength="4" size="4" onkeydown="min_value(this)">
+                        <input type="range" min="0" name="price_min" max="1000" value="{{price_min}}" id="lower">
+                        <input type="range" min="0" name="price_max" max="1000" value="{{price_max}}" id="upper">
+                        <input type="text" id="max" value="{{price_max}}" maxlength="4" size="4" onkeydown="max_value(this)">
+                    </div>
+                    <div class="selects">
+                        <button type="submit" class="selects-buy apply-filter"><div>Применить</div></button>
+                    </div>
+                </div>
+            </form>
+            <div class="product-list">
+                {% if page_obj %}
+                    {% for product in page_obj %}
+                        <div class="product-info">
+                            <div class="product-image"><a href="{% url 'post' product.id %}"><img src="{{ product.imageURL }}" alt="Photo"></a></div>
+                            <div class="product-name">
+                                <div class="name-cat">
+                                    <p class="name">{{ product.name }}</p>
+                                    <p class="cat">{{product.cat.first}}</p>
+                                </div>
+                                <div class="click-hearth"><input class="hearth" type="button" onmousedown="viewDiv(this)"></div>
+                            </div>
+                            <div class="buy_and_price">
+                                <a  class="button-buy" href="{% url 'post' product.id %}"><div>Buy</div></a>
+                                <p class="price">{{ product.price }}₴</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="filter-error">
+                        <div class="filter-error-content">
+                            <p>Ничего не найдено</p>
+                            <img src="{% static 'img/cat_error.png' %}" alt="">
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        {% if page_obj.has_other_pages %}
+            <div id="app" class="container">
+                <ul class="page">
+                    {% if page_obj.has_previous %}
+                    <li class="page__btn">
+                        <span class="material-icons"><a href="?page={{ page_obj.previous_page_number }}"><img src="img/arrow-left.svg" alt=""></a></span>
+                    </li>
+                    {% endif %}
+                    {% for p in page_obj.paginator.page_range %}
+                        {% if page_obj.number == p %}
+                            <li class="page__numbers-selected"><a href="?page={{ p }}">{{ p }}</a></li>
+                        {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+                            <li class="page__numbers"><a href="?page={{ p }}">{{ p }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <li class="page__btn">
+                            <span class="material-icons"><a href="?page={{ page_obj.next_page_number }}"><img src="img/arrow-right.svg" alt=""></a></span>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+    <div class="more-info">
+        <p>Онлайн магазин Корейской косметики Oxy.store</p>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="container-second">
+                <section class="">
+                    <div class="row">
+                      <div class="col-auto">
+                        <p class="pt-2">
+                          <strong>Подписаться на рассылку</strong>
+                        </p>
+                      </div>
+                      <div class="navbar-search">
+                        <div class="search">
+                            <div>
+                                <form action="{% url 'category' %}" method="get">
+                                    <input type="text" class="search-input" placeholder="Введите почту" name="text_mail">
+                                    <button class="search-icon" type="submit" ><img src="{% static 'img/mail.svg' %}" alt=""></button>
+                                </form>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                </section>
+                <div class="footer-icons">
+                <ul class="footer-list-icons">
+                    <li class="icon-item"><a class="nav-link" href="#"><img src="{% static 'img/icons8-tiktok.svg' %}" alt=""></a></li>
+                    <li class="icon-item"><a class="nav-link" href="#"><img src="{% static 'img/youtube.svg' %}" alt=""></a></li>
+                    <li class="icon-item"><a class="nav-link" href="#"><img src="{% static 'img/telegram.svg' %}" alt=""></a></li>
+                    <li class="icon-item"><a class="nav-link" href="#"><img src="{% static 'img/inst.svg' %}" alt=""></a></li>
+                </ul>
+            </div>
+            <div class="text-center p-3"><a class="text-down" href="#">© OXY online store 2022</a></div>
+            </div>
+            <div class="container-first">
+                  <div class="footer-list">
+                    <div class="footer-list-items">
+                      <h5 class="text-uppercase">Клиентам</h5>
+                      <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Home page</a></li>
+                        <li><a href="#" class="text-white">ALL Categories</a></li>
+                        <li><a href="#" class="text-white">About Us</a></li>
+                      </ul>
+                    </div>
+                    <div class="footer-list-items">
+                      <h5 class="text-uppercase">Доставка</h5>
+                      <ul class="list-unstyled mb-0">
+                        <li><a href="#" class="text-white">Shipping and payment</a></li>
+                        <li><a href="#" class="text-white">Agreement</a></li>
+                        <li><a href="#" class="text-white">Wholesale clients</a></li>
+                      </ul>
+                    </div>
+                    <div class="footer-list-items">
+                      <h5 class="text-uppercase">Контакты</h5>
+                      <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">093 38 48 050</a></li>
+                        <li><a href="#" class="text-white">oxy.store@gmail.com</a></li>
+                      </ul>
+                    </div>
+                  </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        function viewDiv(ele) {
+            if (ele.style.backgroundImage == 'url("../img/hearth-fill.svg")') {
+                ele.style.backgroundImage="url(../img/Path.svg)";
+            } else {
+                ele.style.backgroundImage="url(../img/hearth-fill.svg)";
+            }
+        }
+    </script>
+    <script>
+        document.querySelector('.select-field').addEventListener('click',()=>{
+        document.querySelector('.list').classList.toggle('show');
+        document.querySelector('.down-arrow').classList.toggle('rotate180');});
+    </script>
+    <script>
+        document.querySelector('.select-field2').addEventListener('click',()=>{
+        document.querySelector('.list2').classList.toggle('show');
+        document.querySelector('.down-arrow2').classList.toggle('rotate180');});
+    </script>
+    <script>
+        document.querySelector('.select-field3').addEventListener('click',()=>{
+        document.querySelector('.list3').classList.toggle('show');
+        document.querySelector('.down-arrow3').classList.toggle('rotate180');});
+    </script>
+    <script>
+        document.querySelector('.select-field4').addEventListener('click',()=>{
+        document.querySelector('.list4').classList.toggle('show');
+        document.querySelector('.down-arrow4').classList.toggle('rotate180');});
+    </script>
+    <script>
+        document.querySelector('.select-field5').addEventListener('click',()=>{
+        document.querySelector('.list5').classList.toggle('show');
+        document.querySelector('.down-arrow5').classList.toggle('rotate180');});
+    </script>
+    <script src="{% static '/js/range_js.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/filter_prod.js' %}"></script>
+</body>
+</html>

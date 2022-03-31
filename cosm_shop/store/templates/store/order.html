@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+{% load static %}
+{% load poll_extras %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OX.P</title>
+
+    <link rel="shortcut icon" href="img/faicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/order.css' %}">
+
+    <script type="text/javascript">
+		var user = '{{request.user}}'
+
+		function getToken(name) {
+		    var cookieValue = null;
+		    if (document.cookie && document.cookie !== '') {
+		        var cookies = document.cookie.split(';');
+		        for (var i = 0; i < cookies.length; i++) {
+		            var cookie = cookies[i].trim();
+		            // Does this cookie string begin with the name we want?
+		            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+		                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		                break;
+		            }
+		        }
+		    }
+		    return cookieValue;
+		}
+		var csrftoken = getToken('csrftoken')
+
+		function getCookie(name) {
+		    // Split cookie string and get all individual name=value pairs in an array
+		    var cookieArr = document.cookie.split(";");
+
+		    // Loop through the array elements
+		    for(var i = 0; i < cookieArr.length; i++) {
+		        var cookiePair = cookieArr[i].split("=");
+
+		        /* Removing whitespace at the beginning of the cookie name
+		        and compare it with the given string */
+		        if(name == cookiePair[0].trim()) {
+		            // Decode the cookie value and return
+		            return decodeURIComponent(cookiePair[1]);
+		        }
+		    }
+
+		    // Return null if not found
+		    return null;
+		}
+		var cart = JSON.parse(getCookie('cart'))
+
+		if (cart == undefined){
+			cart = {}
+			console.log('Cart Created!', cart)
+			document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
+		}
+		console.log('Cart:', cart)
+
+	</script>
+
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="navbar-content">
+                <div class="navbar-logo">
+                    <a class="navbar-brand" href="home.html">OXY.STORE</a>
+                </div>
+                <div class="navbar-info">
+                    <ul class="navbar-list">
+                        <li class="list-item"><a class="nav-link" href="{% url 'store' %}">Главная</a></li>
+                        <li class="list-item"><a class="nav-link" id="act" href="{% url 'category' %}">Категории</a></li>
+                        <li class="list-item"><a class="nav-link" href="#">О нас</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="navbar-content">
+                <div class="search">
+                    <div>
+                        <form action="{% url 'category' %}" method="get">
+                            <input type="text" class="search-input" placeholder="Поиск по названию" name="text_search">
+                            <button class="search-icon" type="submit" ><img src="{% static 'img/search.svg' %}" alt=""></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="navbar-icons">
+                    <ul class="icons-list">
+                        <li class="icons-item"><a class="nav-link" href="#"><img src="{% static 'img/heart.svg' %}" alt=""></a></li>
+                        <li class="icons-item"><a class="nav-link" href="{% url 'order' %}"><img src="{% static 'img/cart.svg' %}" alt=""> <span class="total-price">{{order.get_cart_total}}</span></a></li>
+                        <li class="icons-item"><a class="nav-link disabled" href="#"><img src="{% static 'img/user.svg' %}" alt=""></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="content">
+        <div class="link-home">
+            <a class="back-page" href="{% url 'category' %}"><img class="image-arrow" src="{% static 'img/arrow-left.svg' %}" alt="">Categories</a>
+        </div>
+        <div class="main-label">My goods</div>
+        <div class="main">
+            <div class="product-list">
+                <hr>
+                {% for item in items %}
+                    <div class="product-cart">
+                    <div class="product-cart-image"><img src="{{item.product.imageURL}}" alt=""></div>
+                    <div class="product-info">
+                        <div class="info-block-first">
+                            <div class="first-name-exit">
+                                <p class="product-name">{{item.product.name}}</p>
+                                <div><img src="{% static 'img/exit.svg' %}" alt=""></div>
+                            </div>
+                            <p class="product-cat">{{item.product.cat.first}}</p>
+                        </div>
+                        <div class="info-block-second">
+                            <div class="second-count">
+                                <div style="color: #363941; font-size: 18px; height: 16px; font-family: 'Gilroy B'; margin-right: 30px;">50 ml</div>
+                                <div class="count-min-plus">
+                                    <img data-product="{{item.product.id}}" data-action="add" class="chg-quantity update-cart" src="../img/plus.svg">
+                                    <div><p id="counter-label">{{item.quantity}}</p></div>
+                                    <img data-product="{{item.product.id}}" data-action="remove" class="chg-quantity update-cart" src="../img/minus.svg">
+                                </div>
+                            </div>
+                            <div class="product-price">${{ item.product.price|multiply:item.quantity }}</div>
+                        </div>
+                    </div>
+                </div>
+                    <hr>
+                {% endfor %}
+            </div>
+            <div class="order">
+                <div class="order-content">
+                    <div>
+                        <p class="order-main-text">Your order</p>
+                        <div class="order-text">
+                            <p>Sum</p>
+                            <p>${{order.get_cart_total|floatformat:2}}</p>
+                        </div>
+                        <div class="order-text">
+                            <p>Discount</p>
+                            <p>$0.00</p>
+                        </div>
+                        <div class="order-text-pay">
+                            <p>To pay</p>
+                            <p>${{order.get_cart_total|floatformat:2}}</p>
+                        </div>
+                    </div>
+                    <div class="product-sale">
+                        <p><a class="continue" href="{% url 'category' %}">Continue Shopping</a></p>
+                        <a class="button-sale" href=""><span>Add to cart</span></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="more-info">
+        <p>Онлайн магазин Корейской косметики Oxy.store</p>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="container-second">
+                <section class="">
+                    <div class="row">
+                      <div class="col-auto">
+                        <p class="pt-2">
+                          <strong>Подписаться на рассылку</strong>
+                        </p>
+                      </div>
+                      <div class="navbar-search">
+                        <div class="search">
+                            <div>
+                                <form action="{% url 'category' %}" method="get">
+                                    <input type="text" class="search-input" placeholder="Введите почту" name="text_mail">
+                                    <button class="search-icon" type="submit" ><img src="{% static 'img/mail.svg' %}" alt=""></button>
+                                </form>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                </section>
+                <div class="footer-icons">
+                <ul class="footer-list-icons">
+                    <li class="icon-item"><a class="nav-link" href="#"><img src="{% static 'img/icons8-tiktok.svg' %}" alt=""></a></li>
+                    <li class="icon-item"><a class="nav-link" href="#"><img src="{% static 'img/youtube.svg' %}" alt=""></a></li>
+                    <li class="icon-item"><a class="nav-link" href="#"><img src="{% static 'img/telegram.svg' %}" alt=""></a></li>
+                    <li class="icon-item"><a class="nav-link" href="#"><img src="{% static 'img/inst.svg' %}" alt=""></a></li>
+                </ul>
+            </div>
+            <div class="text-center p-3"><a class="text-down" href="#">© OXY online store 2022</a></div>
+            </div>
+            <div class="container-first">
+                  <div class="footer-list">
+                    <div class="footer-list-items">
+                      <h5 class="text-uppercase">Клиентам</h5>
+                      <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Home page</a></li>
+                        <li><a href="#" class="text-white">ALL Categories</a></li>
+                        <li><a href="#" class="text-white">About Us</a></li>
+                      </ul>
+                    </div>
+                    <div class="footer-list-items">
+                      <h5 class="text-uppercase">Доставка</h5>
+                      <ul class="list-unstyled mb-0">
+                        <li><a href="#" class="text-white">Shipping and payment</a></li>
+                        <li><a href="#" class="text-white">Agreement</a></li>
+                        <li><a href="#" class="text-white">Wholesale clients</a></li>
+                      </ul>
+                    </div>
+                    <div class="footer-list-items">
+                      <h5 class="text-uppercase">Контакты</h5>
+                      <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">093 38 48 050</a></li>
+                        <li><a href="#" class="text-white">oxy.store@gmail.com</a></li>
+                      </ul>
+                    </div>
+                  </div>
+            </div>
+
+        </div>
+    </footer>
+    <script>
+        var counterVal = 1;
+
+        function plusClick() {
+            updateDisplay(++counterVal);
+        }
+        function minusClick() {
+            if (counterVal > 1) {
+                updateDisplay(--counterVal);
+            }
+        }
+
+        function updateDisplay(val) {
+            document.getElementById("counter-label").innerHTML = val;
+        }
+    </script>
+    <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+</body>
+</html>

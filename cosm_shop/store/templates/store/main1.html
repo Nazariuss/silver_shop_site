@@ -2,11 +2,12 @@
 {% load static %}
 <html>
 <head>
-    <title>Ecom</title>
+    <title>ECOM{% if title %} | {{title}}{%endif%}</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1"/>
 
@@ -64,6 +65,16 @@
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'store' %}">Store<span class="sr-only">(current)</span></a>
           </li>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Category
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  {% for c in cats %}
+                    <a class="dropdown-item" href="{{c.get_absolute_url}}">{{c.name}}</a>
+                  {% endfor %}
+              </div>
+            </div>
         </ul>
         <div class="form-inline my-2 my-lg-0">
             <a href="{% url 'register' %}" class="btn btn-warning">Register</a> | <a href="{% url 'login' %}" class="btn btn-warning">Login</a>
@@ -81,6 +92,7 @@
         {% block content %}
         {% endblock content %}
         <div class="demo">
+            {% if page_obj.has_other_pages %}
             <nav class="pagination-outer" aria-label="Page navigation">
                 <ul class="pagination">
                     {% if page_obj.has_previous %}
@@ -104,6 +116,7 @@
                         </li>
                     {% endif %}
                 </ul>
+                {% endif %}
             </nav>
         </div>
     </div>

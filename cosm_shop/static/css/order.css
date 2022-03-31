@@ -1,0 +1,527 @@
+@font-face {
+  font-family: 'Gilroy B';
+  src: url('../fonts/Gilroy-Bold.ttf');
+}
+@font-face {
+  font-family: 'Gilroy SB';
+  src: url('../fonts/Gilroy-Semibold.ttf');
+}
+@font-face {
+  font-family: 'Gilroy R';
+  src: url('../fonts/Gilroy-Regular.ttf');
+}
+@font-face {
+  font-family: 'Bronova';
+  src: url('../fonts/Bronova Bold.ttf');
+}
+
+*{
+    padding:0;
+    margin:0;
+}
+
+body {
+    font-family: 'Gilroy R';
+}
+
+/* Header start */
+
+.header {
+    background-color: #F1E8FF;
+    height: 100px;
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.navbar {
+    width: 1320px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-content {
+   height: 40px;
+   display: flex;
+   align-items: center;
+}
+
+.navbar-logo {
+    margin-right: 70px;
+}
+
+.navbar-brand {
+    font-family: 'Bronova';
+    color: #363941;
+    font-size: 24px;
+}
+
+.navbar-info ul {
+    display: flex;
+}
+
+.list-item{
+    margin-right: 50px;
+}
+
+.nav-link {
+    font-family: 'Gilroy SB';
+    font-size: 14px;
+    transition: 0.5s;
+}
+
+.nav-link img {
+    width: 24px;
+}
+
+.list-item .nav-link:hover{
+    opacity: 0.6;
+}
+
+#act {
+    color: #9F6ABA;
+}
+
+.navbar-icons {
+    padding-top: 3px;
+}
+
+.navbar-icons ul {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.icons-list li:nth-child(2) {
+    margin: 0px 25px;
+}
+
+ul li {
+    list-style: none;
+    position: relative;
+}
+
+.total-price {
+    position: absolute;
+    margin-left: -37px;
+    margin-top: 25px;
+}
+a {
+    font-size: 18px;
+    color: #97979F;
+    text-decoration: none;
+}
+
+
+.search {
+
+}
+
+.search div form {
+    width: 300px;
+    height: 40px;
+    border: 1.5px solid #97979F;
+    box-sizing: border-box;
+    border-radius: 26px;
+    margin-right: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-input {
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    font-family: 'Gilroy R';
+    font-size: 14px;
+    color: #97979F;
+    margin-left: 20px;
+}
+input.search-input::placeholder {
+    font-family: 'Gilroy R';
+    font-size: 14px;
+    color: #97979F;
+}
+
+
+.search .search-input {
+    width: 100%;
+    transition: width 0.4s linear
+}
+
+.search-icon {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-top: 2px;
+    margin-right: 16px;
+
+}
+
+.search-icon img {
+    width: 24px;
+}
+
+.search-icon:hover {
+    color: #fff !important
+}
+
+.nav-icons {
+    display: inline;
+}
+/* Header over */
+
+.content{
+    margin: auto;
+    width: 1257px;
+    margin-bottom: 50px;
+}
+
+.link-home {
+    margin-bottom: 50px;
+}
+
+.image-arrow {
+    margin-right: 15px;
+}
+
+.main-label {
+    font-family: 'Gilroy B';
+    font-size: 40px;
+    color: #363941;
+}
+
+hr {
+    margin: 25px 0px;
+    max-width: 718px;
+}
+
+.main {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.product-list {
+    width: 718px;
+}
+
+.product-cart {
+    height:116px;
+    display: flex;
+
+}
+
+.product-cart-image {
+    margin-right: 30px;
+}
+
+.product-cart-image img{
+    width: 100px;
+    height:116px;
+}
+
+.product-info {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.first-name-exit{
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-name {
+    font-family: 'Gilroy B';
+    font-size: 20px;
+    color: #363941;
+    margin-bottom: 12px;
+}
+
+.product-cat {
+    font-family: 'Gilroy R';
+    font-size: 12px;
+    color: #97979F;
+}
+
+.info-block-second {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+.second-count {
+    display: flex;
+    align-items:center;
+}
+
+
+.count-min-plus{
+    display: flex;
+    align-items: center;
+    height: 16px;
+}
+
+.count-min-plus div {
+    text-align: center;
+}
+
+#counter-label {
+    width: 36px;
+    text-align: center;
+    font-family: 'Gilroy B';
+    font-size: 18px;
+    color: #363941;
+
+}
+
+.count-min-plus button {
+    width:22px;
+    height:22px;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+}
+
+.product-price {
+    font-family: 'Gilroy B';
+    font-size: 24px;
+    color: #363941;
+    height: 22px;
+
+}
+
+.order {
+    width: 430px;
+    height: 357px;
+    background: #F8F3FE;
+    border-radius: 2px;
+}
+
+.order-content {
+    height: 277px;
+    margin: 40px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.order-main-text {
+    font-family: 'Gilroy B';
+    font-size: 40px;
+    color: #363941;
+    margin-bottom: 25px;
+}
+
+.order-text {
+    font-family: 'Gilroy R';
+    font-size: 16px;
+    color: #97979F;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.order-text-pay {
+    font-family: 'Gilroy B';
+    font-size: 16px;
+    color: #363941;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.product-sale {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Gilroy B';
+    font-size: 12px;
+    color: #363941;
+}
+
+.chg-quantity {
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+}
+
+.button-sale {
+    width: 200px;
+    height: 60px;
+    background: #9F6ABA;
+    border-radius: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.button-sale:hover {
+    transform: scale(1.05);
+}
+
+.button-sale span {
+    font-family: 'Gilroy B';
+    font-size: 18px;
+    color: #FFFFFF;
+    margin: 3px 0px 0px 0px;
+}
+
+.continue {
+    font-family: 'Gilroy B';
+    font-size: 12px;
+    color: #363941;
+}
+
+.more-info {
+    width: 100%;
+    height: 60px;
+    background: #9F6ABA;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.more-info {
+    font-family: 'Gilroy B';
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+/* Content over */
+
+/* Footer start */
+.footer {
+    width: 100%;
+    height: 330px;
+    background: #524F55;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content {
+    width: 1320px;
+    height:260px;
+    display:flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+
+.footer-list {
+    display:flex;
+}
+
+.footer-list div:nth-child(2){
+    margin: 0px 100px 0px 130px;
+}
+
+.text-uppercase {
+    font-family: 'Gilroy B';
+    font-size: 16px;
+    display:flex;
+    justify-content: space-between;
+    color: #fff;
+    margin: 0px 0px 22px 0px;
+}
+
+.list-unstyled li {
+    margin: 0px 0px 18px 0px;
+}
+
+.text-white {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.text-down {
+    font-family: 'Gilroy R';
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.col-auto {
+    font-family: 'Gilroy B';
+    font-size: 16px;
+    color: #fff;
+    margin: 0px 0px 26px 0px;
+}
+
+
+.footer-icons {
+    margin-top: 35px;
+    margin-bottom: 60px;
+}
+
+.footer-list-icons {
+display: flex;
+
+}
+.icon-item {
+    margin-right: 30px;
+}
+
+.container-first a {
+    transition: 0.3s;
+}
+
+.container-first a:hover {
+    opacity: 0.6;
+}
+
+.search-inputs {
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    line-height: 20px;
+    color: #97979F;
+}
+
+.search .search-inputs {
+    padding-left: 15px;
+    width: 100%;
+    caret-color: #97979F;
+    font-size: 14px;
+    font-weight: 300;
+    color: black;
+    transition: width 0.4s linear;
+    color: #fff;
+    font-family: 'Gilroy R';
+    margin-top: 1px;
+    margin-left: 8px;
+}
+.search-input::placeholder {
+    font-family: 'Gilroy R';
+    font-size: 12px;
+    line-height: 20px;
+    color: #97979F;
+}
+
+.search-icons {
+    float: right;
+    padding-right: 22px;
+    margin-top: 5px;
+}
+
+
+.search-icons img {
+    width: 18px;
+}
+
+/* Footer over */
